@@ -28,7 +28,7 @@ RSpec.describe BooksController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.build(:book, name: nil).attributes
   }
 
   # This should return the minimal set of values that should be in the session
@@ -78,14 +78,14 @@ RSpec.describe BooksController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        valid_attributes.merge(name: "Some Other Name")
       }
 
       it "updates the requested book" do
         book = Book.create! valid_attributes
         put :update, params: {id: book.to_param, book: new_attributes}, session: valid_session
         book.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:book).name).to eq("Some Other Name")
       end
 
       it "assigns the requested book as @book" do
