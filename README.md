@@ -1,24 +1,45 @@
-# README
+# HomeLibrary Seed Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository is the starting point for much of the work in the book [Angular for Rails Developers](https://www.angularonrails.com/angular-rails-developers/).
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+```
+$ git clone git@github.com:jasonswett/home-library-seed.git
+$ bundle install
+$ rails db:setup
+$ cd client
+$ npm install
+```
 
-* System dependencies
+## Running the project
 
-* Configuration
+Rails server:
 
-* Database creation
+```
+$ rails server --binding 0.0.0.0
+```
 
-* Database initialization
+Angular server:
 
-* How to run the test suite
+```
+$ cd client
+$ npm start
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running the tests
 
-* Deployment instructions
+All tests should be passing.
 
-* ...
+Rails:
+
+```
+$ rspec
+```
+
+Angular:
+
+```
+$ cd client
+$ ng test
+```
