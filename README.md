@@ -21,7 +21,7 @@ $ npm install
 Rails server:
 
 ```
-$ rails server --binding 0.0.0.0
+$ rails server
 ```
 
 Angular server:
@@ -48,4 +48,12 @@ Angular:
 ```
 $ cd client
 $ ng test
+```
+
+## Deployment
+
+```
+$ heroku buildpacks:add https://github.com/jasonswett/heroku-buildpack-nodejs
+$ heroku buildpacks:add heroku/ruby
+$ git push heroku master
 ```
