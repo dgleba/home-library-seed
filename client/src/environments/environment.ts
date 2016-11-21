@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   auth0: {
-    clientID: '8NWWMzcPNXEvxogqwRar18hJuYAvsrG0',
+    clientID: 'j3JtzcbsiMI2GBdFvFoqEN38qKSVb6CE',
     domain: 'benfranklinlabs.auth0.com'
   }
 };
