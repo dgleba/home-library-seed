@@ -7,7 +7,11 @@ let Auth0Lock = require('auth0-lock').default;
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
+  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
+    auth: {
+      params: { scope: 'openid email' }
+    }
+  });
 
   constructor() {
     // Add callback for lock `authenticated` event
