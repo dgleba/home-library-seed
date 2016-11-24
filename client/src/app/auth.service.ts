@@ -9,6 +9,8 @@ export class Auth {
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
     auth: {
+      redirectUrl: myConfig.redirectUrl,
+      responseType: 'token',
       params: { scope: 'openid email' }
     }
   });

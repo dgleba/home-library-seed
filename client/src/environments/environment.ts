@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   auth0: {
     clientID: 'j3JtzcbsiMI2GBdFvFoqEN38qKSVb6CE',
-    domain: 'benfranklinlabs.auth0.com'
+    domain: 'benfranklinlabs.auth0.com',
+    redirectUrl: 'http://localhost:4200/new-user-session'
   }
 };
