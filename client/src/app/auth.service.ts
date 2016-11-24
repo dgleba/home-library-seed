@@ -18,8 +18,7 @@ export class Auth {
     this.lock.on('authenticated', (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
 
-      this.bookService.getList()
-          .subscribe(response => console.log(response));
+      this.bookService.getList().subscribe();
     });
   }
 
