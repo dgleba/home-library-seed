@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NewUserSessionComponent } from './new-user-session/new-user-session.component';
 
-const routes: Routes = [
-  { path: 'new-user-session', component: NewUserSessionComponent }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
