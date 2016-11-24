@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BookService } from './book.service';
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
@@ -16,7 +17,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [AUTH_PROVIDERS],
+  providers: [AUTH_PROVIDERS, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

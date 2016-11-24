@@ -2,6 +2,28 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+import { BookService } from './book.service';
+import { Auth } from './auth.service';
+
+export class MockBookService {
+  constructor() { }
+
+  getList(): Observable<any[]> {
+    return Observable.of([]);
+  }
+}
+
+export class MockAuth {
+  login() {}
+  logout() {}
+  authenticated() {}
+}
+
+let mockBookService = new MockBookService();
+let mockAuth = new MockAuth();
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -9,7 +31,16 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-    });
+    })
+    .overrideComponent(AppComponent, {
+      set: {
+        providers: [
+          { provide: BookService, useValue: mockBookService },
+          { provide: Auth, useValue: mockAuth }
+        ]
+      }
+    })
+    .compileComponents();
   });
 
   it('should create the app', async(() => {

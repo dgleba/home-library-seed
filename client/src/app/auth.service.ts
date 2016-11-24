@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
+import { tokenNotExpired } from 'angular2-jwt';
 import { myConfig } from './auth.config';
+import { BookService } from './book.service';
 
 let Auth0Lock = require('auth0-lock').default;
 
@@ -13,11 +14,11 @@ export class Auth {
     }
   });
 
-  constructor(private authHttp: AuthHttp) {
+  constructor(private bookService: BookService) {
     this.lock.on('authenticated', (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
 
-      this.authHttp.get('http://localhost:3000/api/books.json')
+      this.bookService.getList()
           .subscribe(response => console.log(response));
     });
   }
