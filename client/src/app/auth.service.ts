@@ -1,6 +1,6 @@
-import { Injectable }      from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
-import { myConfig }        from './auth.config';
+import { Injectable } from '@angular/core';
+import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
+import { myConfig } from './auth.config';
 
 let Auth0Lock = require('auth0-lock').default;
 
@@ -9,16 +9,16 @@ export class Auth {
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
     auth: {
-      redirectUrl: myConfig.redirectUrl,
-      responseType: 'token',
       params: { scope: 'openid email' }
     }
   });
 
-  constructor() {
-    // Add callback for lock `authenticated` event
+  constructor(private authHttp: AuthHttp) {
     this.lock.on('authenticated', (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
+
+      this.authHttp.get('http://localhost:3000/api/books.json')
+          .subscribe(response => console.log(response));
     });
   }
 
