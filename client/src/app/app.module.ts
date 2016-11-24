@@ -5,16 +5,21 @@ import { HttpModule } from '@angular/http';
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
+import { HomeLibraryRoutingModule  } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { NewUserSessionComponent } from './new-user-session/new-user-session.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewUserSessionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    HomeLibraryRoutingModule
   ],
   providers: [AUTH_PROVIDERS],
   bootstrap: [AppComponent]
